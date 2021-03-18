@@ -44,9 +44,9 @@ Linux user here! x2
 ```
 
 *comfy* usage:  
-| Command    | Use                                                    |
-|------------|--------------------------------------------------------|
-| --help     | shows this help page and exits                         |
-| --helpf    | shows help about *comfy* functions                     |
-| --file     | executes *comfy* script contents                       |
-| --file --c | executes *comfy* script contents, also prints comments |
+| Command                | Use                                                    |
+|------------------------|--------------------------------------------------------|
+| --help                 | shows this help page and exits                         |
+| --helpf                | shows help about *comfy* functions                     |
+| --file <foo.comfy>     | executes *comfy* script contents                       |
+| --file <foo.comfy> --c | executes *comfy* script contents, also prints comments |
