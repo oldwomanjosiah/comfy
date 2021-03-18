@@ -1,4 +1,4 @@
-# *comfy* script manager
+# *comfy* shell script manager
 *comfy* is a shell script runner tool, which allows the execution of commands in the command line itself, but being these predefined in a portable and universal *.comfy* file.  
 *.comfy* files are plain text, but with some arguments so *comfy parser* understands what do you want to do.
 
