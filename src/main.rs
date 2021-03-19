@@ -41,8 +41,8 @@ fn main() {
 fn print_help() {
     println!("comfy {}", VERSION);
     println!();
-    println!("  --help                   shows this help page and exits                       ");
-    println!("  --helpf                  shows help about comfy functions                     ");
+    println!("  --help                   shows this help page and exits                   ");
+    println!("  --helpf                  shows help about comfy functions                 ");
     println!("  --file <foo.comfy>       runs comfy script contents                       ");
     println!("  --file <foo.comfy> --c   runs comfy script contents, also prints comments ");
     println!();
@@ -51,8 +51,8 @@ fn print_help() {
 fn print_helpf() {
     println!("comfy {}", VERSION);
     println!();
-    println!("  @[space]function         is how you call a function                           ");
-    println!("  sleep [int]              sleeps your program for [int] ms                     ");
+    println!("  @[space]function         is how you call a function       ");
+    println!("  sleep [int]              sleeps your program for [int] ms ");
     println!();
 }
 

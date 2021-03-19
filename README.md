@@ -1,5 +1,5 @@
 # *comfy* command script manager
-*comfy* is a command script manager / runner tool, which allows your to run commands in the command line itself, but being these predefined in a portable and universal *.comfy* file.  
+*comfy* is a multiplatform command script manager / runner tool, which allows your to run commands in the command line itself, but being these predefined in a portable and universal *.comfy* file.  
 *.comfy* files are plain text, but with some arguments so *comfy parser* understands what do you want to do.
 
 ```
