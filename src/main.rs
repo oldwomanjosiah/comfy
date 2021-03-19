@@ -43,8 +43,8 @@ fn print_help() {
     println!();
     println!("  --help                   shows this help page and exits                       ");
     println!("  --helpf                  shows help about comfy functions                     ");
-    println!("  --file <foo.comfy>       executes comfy script contents                       ");
-    println!("  --file <foo.comfy> --c   executes comfy script contents, also prints comments ");
+    println!("  --file <foo.comfy>       runs comfy script contents                       ");
+    println!("  --file <foo.comfy> --c   runs comfy script contents, also prints comments ");
     println!();
 }
 
