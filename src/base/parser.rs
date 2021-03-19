@@ -30,24 +30,22 @@ pub fn parse(file: &str, show_comments: bool) {
                     } else if line_os == os || line_os == "always" {
                         exe_line(index, &line, os);
                     }
-                } else if show_comments {
-                    print_line(index, &line, "sys");
                 } else if kword(&line, index) {
                     // kword does everything
-                } else if !(&line[..2] == "//") {
-                    warning(
-                        &(("syntax, line ".to_owned() + &(index + 1).to_string())
-                            + &" -> ".to_owned()
-                            + &line
-                            + &" parser does not recognize it".to_owned()),
-                    );
+                } else if show_comments {
+                    print_line(index, &line, "sys");
+                } else if &line[..2] != "//" {
+                    warning(&format!(
+                        "syntax, line {} -> {} parser does not recognize it",
+                        &(index + 1),
+                        &line
+                    ));
                 }
             } else {
-                warning(
-                    &(("syntax, line ".to_owned() + &(index + 1).to_string())
-                        + &" -> ".to_owned()
-                        + &"blank lines can originate errors".to_owned()),
-                );
+                warning(&format!(
+                    "syntax, line {} -> blank lines can originate errors",
+                    &(index + 1)
+                ));
             }
         }
     }
@@ -60,57 +58,48 @@ fn kword(line: &str, index: usize) -> bool {
             "sleep" => {
                 print_line(index, &line, "non");
                 if !argument[2].chars().all(char::is_numeric) {
-                    err_syntax(
-                        &(("syntax error, line ".to_owned() + &(index + 1).to_string())
-                            + &" -> ".to_owned()
-                            + argument[2]
-                            + &" is not [int]".to_owned()),
-                    );
+                    err_syntax(&format!(
+                        "syntax error, line {} -> {} is not [int]",
+                        &(index + 1),
+                        &argument[2]
+                    ));
                 }
                 thread::sleep(time::Duration::from_millis(
                     (argument[2]).parse::<u64>().unwrap(),
                 ));
-                return true;
+                true
             }
             _ => {
-                err_syntax(
-                    &(("syntax error, line ".to_owned() + &(index + 1).to_string())
-                        + &" -> ".to_owned()
-                        + argument[1]
-                        + &" is not a comfy function".to_owned()),
-                );
-                return true;
+                err_syntax(&format!(
+                    "syntax error, line {} -> {} is not a comfy function",
+                    &(index + 1),
+                    &argument[1]
+                ));
+                true
             }
         }
     } else {
-        return false;
+        false
     }
 }
 
 fn check_file(file: &str) -> bool {
     if Path::new(file).is_file() && Path::new(file).extension() == Some(OsStr::new("comfy")) {
-        println!("script {} found", file);
-        return true;
+        true
     } else if Path::new(file).is_file() {
         println!("{} is not a .comfy file, proceed? (y/N)", file);
         let mut input = String::new();
 
         match stdin().read_line(&mut input) {
-            Ok(_) => {
-                if input.trim_end().to_lowercase() == "y" {
-                    return true;
-                } else {
-                    return false;
-                }
-            }
+            Ok(_) => input.trim_end().to_lowercase() == "y",
             Err(e) => {
                 err(&e.to_string());
-                return false;
+                false
             }
         }
     } else {
-        err_syntax(&("no such file named ".to_string() + file));
-        return false;
+        err_syntax(&format!("no such file named {}", &file));
+        false
     }
 }
 
@@ -120,13 +109,13 @@ fn exe_line(index: usize, line: &str, os: &str) {
         Command::new("cmd")
             .args(&["/C", &line])
             .status()
-            .expect(&("err, line -> ".to_owned() + &index.to_string()));
+            .unwrap_or_else(|_| panic!("err, line -> {}", &(index + 1)))
     } else {
         Command::new("sh")
             .arg("-c")
             .arg(&line)
             .status()
-            .expect(&("system err, line -> ".to_owned() + &index.to_string()));
+            .unwrap_or_else(|_| panic!("err, line -> {}", &(index + 1)))
     };
 }
 
@@ -138,7 +127,9 @@ fn print_line(index: usize, line: &str, i: &str) {
             ":".truecolor(150, 150, 150),
             line.truecolor(150, 150, 150)
         );
-    } else if i == "non" {
+    }
+
+    if i == "non" {
         // changable color
         println!(
             "{}{} {}",

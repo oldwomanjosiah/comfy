@@ -1,7 +1,7 @@
 use colored::Colorize;
 
 pub fn err(err: &str) {
-    println!("error: {} -> --help", err);
+    println!("error: {} -> --help", err.red());
     std::process::exit(0);
 }
 
