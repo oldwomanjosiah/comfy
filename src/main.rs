@@ -2,10 +2,8 @@ extern crate structopt;
 
 use structopt::StructOpt;
 
-use std::{env, path::PathBuf};
+use std::path::PathBuf;
 mod base;
-
-static VERSION: &str = "0.4.2";
 
 /// The default script to run if none supplied
 const DEFAULT_SCRIPT: &'static str = "./.comfy";
@@ -51,7 +49,7 @@ fn main() {
 }
 
 fn print_helpf() {
-    println!("comfy {}", VERSION);
+    println!("comfy {}", env!("CARGO_PKG_VERSION"));
     println!();
     println!("  @[space]function         is how you call a function       ");
     println!("  sleep [int]              sleeps your program for [int] ms ");
