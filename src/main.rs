@@ -1,7 +1,7 @@
 use std::env;
 mod base;
 
-static VERSION: &str = "0.4.2";
+static VERSION: &str = env!("CARGO_PKG_VERSION");
 
 fn main() {
     let args: Vec<String> = env::args().collect();
