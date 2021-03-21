@@ -6,11 +6,11 @@ use std::path::PathBuf;
 mod base;
 
 /// The default script to run if none supplied
-const DEFAULT_SCRIPT: &'static str = "./.comfy";
+const DEFAULT_SCRIPT: &'static str = "./run.comfy";
 
 #[derive(StructOpt, Debug)]
 #[structopt(
-    about = "Cross-platform script/command manager and runner\nBy default tries to run script ./.comfy"
+    about = "Cross-platform script/command manager and runner\nBy default tries to run script ./run.comfy"
 )]
 struct Arguments {
     #[structopt(subcommand)]
