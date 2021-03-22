@@ -44,9 +44,9 @@ Linux user here! x2
 ```
 
 *comfy* usage:  
-| Command                | Use                                                    |
-|------------------------|--------------------------------------------------------|
-| --help                 | shows this help page and exits                         |
-| --helpf                | shows help about *comfy* functions                     |
-| --file <foo.comfy>     | runs *comfy* script contents                           |
-| --file <foo.comfy> --c | runs *comfy* script contents, also prints comments     |
+| Command                | Use                                                        |
+|------------------------|------------------------------------------------------------|
+| --help                 | Prints this message or the help of the given subcommand(s) |
+| --helpf                | Scripting help                                             |
+| run <run.comfy>        | Run a script                                               |
+| run <run.comfy> --c    | Show comments from source while running                    |
