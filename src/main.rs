@@ -1,5 +1,3 @@
-extern crate structopt;
-
 use structopt::StructOpt;
 
 use std::path::PathBuf;
@@ -28,7 +26,7 @@ enum Command {
         /// Path to Comfy Script to run
         file: Option<PathBuf>,
         /// Show comments from source while running
-        #[structopt(short, long)]
+        #[structopt(short, long = "c")]
         comments: bool,
     },
 }
