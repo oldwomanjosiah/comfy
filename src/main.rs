@@ -5,7 +5,6 @@ use structopt::StructOpt;
 use std::path::PathBuf;
 mod base;
 
-/// The default script to run if none supplied
 const DEFAULT_SCRIPT: &'static str = "./run.comfy";
 
 #[derive(StructOpt, Debug)]
