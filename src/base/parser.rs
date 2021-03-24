@@ -10,7 +10,7 @@ use std::{
     thread, time,
 };
 
-const EXTENSION: &'static str = "comfy";
+const EXTENSION: &str = "comfy";
 
 pub fn parse(file: &PathBuf, show_comments: bool) {
     let os = consts::OS;
@@ -69,6 +69,14 @@ fn kword(line: &str, index: usize) -> bool {
                 thread::sleep(time::Duration::from_millis(
                     (argument[2]).parse::<u64>().unwrap(),
                 ));
+                true
+            }
+            "print" => {
+                print_line(index, &line, "non");
+                for i in &argument[2..] {
+                    print!("{} ", i);
+                }
+                println!();
                 true
             }
             _ => {
@@ -132,7 +140,7 @@ fn print_line(index: usize, line: &str, i: &str) {
     }
 
     if i == "non" {
-        // changable color
+        // other color
         println!(
             "{}{} {}",
             (index + 1).to_string().truecolor(150, 150, 150),
