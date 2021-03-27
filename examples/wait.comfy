@@ -1,0 +1,9 @@
+// this is a comment
+> linux
+echo linux system!
+> windows
+echo windows system!
+> always
+echo this always runs!
+@ sleep 2000
+echo you waited 2000 ms!

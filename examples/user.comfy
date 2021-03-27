@@ -1,0 +1,8 @@
+> linux
+echo Linux user here!
+> windows
+echo Windows user here!
+> linux
+echo Linux user here! x2
+> windows
+echo Windows user here! x2

@@ -1,4 +1,4 @@
-use crate::base::error_handler::{err, err_syntax, warning};
+use crate::{err, err_syntax, warning};
 use colored::Colorize;
 use std::{
     env::consts,
@@ -37,14 +37,14 @@ pub fn parse(file: &PathBuf, show_comments: bool) {
                 } else if show_comments {
                     print_line(index, &line, "sys");
                 } else if &line[..2] != "//" {
-                    warning(&format!(
+                    warning!(&format!(
                         "syntax, line {} -> {} parser does not recognize it",
                         &(index + 1),
                         &line
                     ));
                 }
             } else {
-                warning(&format!(
+                warning!(&format!(
                     "syntax, line {} -> blank lines can originate errors",
                     &(index + 1)
                 ));
@@ -60,7 +60,7 @@ fn kword(line: &str, index: usize) -> bool {
             "sleep" => {
                 print_line(index, &line, "non");
                 if !argument[2].chars().all(char::is_numeric) {
-                    err_syntax(&format!(
+                    err_syntax!(&format!(
                         "syntax error, line {} -> {} is not [int]",
                         &(index + 1),
                         &argument[2]
@@ -80,12 +80,11 @@ fn kword(line: &str, index: usize) -> bool {
                 true
             }
             _ => {
-                err_syntax(&format!(
+                err_syntax!(&format!(
                     "syntax error, line {} -> {} is not a comfy function",
                     &(index + 1),
                     &argument[1]
                 ));
-                true
             }
         }
     } else {
@@ -103,13 +102,11 @@ fn check_file(file: &PathBuf) -> bool {
         match stdin().read_line(&mut input) {
             Ok(_) => input.trim_end().to_lowercase() == "y",
             Err(e) => {
-                err(&e.to_string());
-                false
+                err!(&e.to_string());
             }
         }
     } else {
-        err_syntax(&format!("no such file named {}", file.display()));
-        false
+        err_syntax!(&format!("no such file named {}", file.display()));
     }
 }
 

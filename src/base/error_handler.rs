@@ -1,15 +1,28 @@
-use colored::Colorize;
+#[macro_export]
+macro_rules! err {
+    ($err: expr) => {
+        use colored::Colorize;
 
-pub fn err(err: &str) {
-    println!("error: {} -> --help", err.red());
-    std::process::exit(0);
+        eprintln!("{}: {} -> --help", "error".red(), $err);
+        std::process::exit(1);
+    };
 }
 
-pub fn err_syntax(err: &str) {
-    println!("error: {} -> exiting program", err.red());
-    std::process::exit(0);
+#[macro_export]
+macro_rules! err_syntax {
+    ($err: expr) => {
+        use colored::Colorize;
+
+        eprintln!("{}: {} -> exiting program", "error".red(), $err);
+        std::process::exit(1);
+    };
 }
 
-pub fn warning(err: &str) {
-    println!("warning: {}", err.yellow());
+#[macro_export]
+macro_rules! warning {
+    ($warn: expr) => {
+        use colored::Colorize;
+
+        eprintln!("{}: {}", "warning".yellow(), $warn);
+    };
 }
