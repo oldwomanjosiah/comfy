@@ -33,7 +33,7 @@ enum Command {
 fn main() {
     let args = Arguments::from_args();
 
-    match args.subcommand.unwrap_or_else(|| Command::Run {
+    match args.subcommand.unwrap_or(Command::Run {
         file: None,
         comments: false,
     }) {
