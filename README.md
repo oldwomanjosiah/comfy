@@ -48,6 +48,8 @@ Linux user here!
 Linux user here! x2
 ```
 
+## Basic Usage
+
 *comfy* usage:  
 | Command                | Use                                                        |
 |------------------------|------------------------------------------------------------|
@@ -55,3 +57,29 @@ Linux user here! x2
 | --helpf                | Scripting help                                             |
 | run <run.comfy>        | Run a script                                               |
 | run <run.comfy> --c    | Show comments from source while running                    |
+
+If you are on a unix-like system also have the option, with `cargo install`, to
+make the script itself runnable like so:
+
+```bash
+#!comfy run
+> linux
+echo Linux Executable Script!
+> macos
+echo But also works on Mac
+> solaris
+echo or Solaris!
+```
+
+and then you simply need to
+
+```bash
+# Once overall (to have comfy installed)
+cargo install comfy
+
+# Once for each script you create (to enable the shebang on the first line)
+chmod +x run.comfy
+
+# To run the script (the ./ is important)
+./run.comfy
+```
