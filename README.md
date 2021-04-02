@@ -22,9 +22,13 @@ As you are thinking, the above code only runs the commands, that should be runne
 - windows
 - others
 
+## Universal Functions
+
 *comfy* also has some *universal functions*, they work on any system regardless of the installed libraries. *comfy* comes with several packaged libraries, so far, we have the following *universal functions*:
 - @ sleep [int] (ms)
 - print [str] (text)
+
+## System Clauses
 
 Not to mention that you can intertwine different system clauses, like this:
 ```
