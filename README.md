@@ -70,6 +70,17 @@ working directory. If That file does not exist it will tell you so and exit.
 If you are on a unix-like system also have the option, with `cargo install`, to
 make the script itself runnable like so:
 
+First you will need to make sure you have *comfy* installed:
+```bash
+cargo install --git https://github.com/dacousb/comfy
+
+# and then take note of its installation location
+which comfy
+```
+
+You can then write your script. Replace `comfy` in the example below (on the first
+line) with the installation loation noted before.
+
 ```bash
 #!comfy run
 > linux
@@ -83,9 +94,6 @@ echo or Solaris!
 and then you simply need to
 
 ```bash
-# Once overall (to have comfy installed)
-cargo install comfy
-
 # Once for each script you create (to enable the shebang on the first line)
 chmod +x run.comfy
 
