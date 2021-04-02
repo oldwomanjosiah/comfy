@@ -2,6 +2,13 @@
 *comfy* is a cross-platform command script manager / runner tool, which allows you to run commands in the command line itself, but being these predefined in a portable and universal *.comfy* file.  
 *.comfy* files are plain text, but with some arguments so *comfy parser* understands what do you want to do.
 
+## System Clauses
+
+Comfy allows you to write system independant scripts while minimizing code
+reproduction by allowing you to arbitrarily specialize sections of the script
+which are system dependant, while using cross platform code for sections that
+are not.
+
 ```
 // this is a comment
 > linux
@@ -13,7 +20,7 @@ echo this always runs!
 @ sleep 2000
 echo you waited 2000 ms!
 ```
-As you are thinking, the above code only runs the commands, that should be runned, depending on the environment in which the script is runned. Also, keep in mind that everything after *always* clause will run on any operating system. *comfy* automatically detects the system, and, being programmed in Rust, allows the specification of the following systems:
+As you are thinking, the above code only runs the commands, that should be run, depending on the environment in which the script is run. Also, keep in mind that everything after *always* clause will run on any operating system. *comfy* automatically detects the system, and, being programmed in Rust, allows the specification of the following systems:
 - linux
 - macos
 - freebsd
@@ -21,14 +28,6 @@ As you are thinking, the above code only runs the commands, that should be runne
 - android
 - windows
 - others
-
-## Universal Functions
-
-*comfy* also has some *universal functions*, they work on any system regardless of the installed libraries. *comfy* comes with several packaged libraries, so far, we have the following *universal functions*:
-- @ sleep [int] (ms)
-- print [str] (text)
-
-## System Clauses
 
 Not to mention that you can intertwine different system clauses, like this:
 ```
@@ -48,9 +47,19 @@ Linux user here!
 Linux user here! x2
 ```
 
+
+## Universal Functions
+
+*comfy* also has some *universal functions*, they work on any system regardless of the installed libraries. *comfy* comes with several packaged libraries, so far, we have the following *universal functions*:
+- @ sleep [int] (ms)
+- print [str] (text)
+
 ## Basic Usage
 
-*comfy* usage:  
+By defaut *comfy* will try to run a script named `run.comfy` in your current
+working directory. If That file does not exist it will tell you so and exit.
+*comfy* has the following command line arguments:
+
 | Command                | Use                                                        |
 |------------------------|------------------------------------------------------------|
 | --help                 | Prints this message or the help of the given subcommand(s) |
