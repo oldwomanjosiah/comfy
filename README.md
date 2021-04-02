@@ -24,6 +24,7 @@ As you are thinking, the above code only runs the commands, that should be runne
 
 *comfy* also has some *universal functions*, they work on any system regardless of the installed libraries. *comfy* comes with several packaged libraries, so far, we have the following *universal functions*:
 - @ sleep [int] (ms)
+- print [str] (text)
 
 Not to mention that you can intertwine different system clauses, like this:
 ```
@@ -44,9 +45,9 @@ Linux user here! x2
 ```
 
 *comfy* usage:  
-| Command                | Use                                                    |
-|------------------------|--------------------------------------------------------|
-| --help                 | shows this help page and exits                         |
-| --helpf                | shows help about *comfy* functions                     |
-| --file <foo.comfy>     | runs *comfy* script contents                           |
-| --file <foo.comfy> --c | runs *comfy* script contents, also prints comments     |
+| Command                | Use                                                        |
+|------------------------|------------------------------------------------------------|
+| --help                 | Prints this message or the help of the given subcommand(s) |
+| --helpf                | Scripting help                                             |
+| run <run.comfy>        | Run a script                                               |
+| run <run.comfy> --c    | Show comments from source while running                    |

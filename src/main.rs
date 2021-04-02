@@ -3,7 +3,7 @@ use structopt::StructOpt;
 use std::path::PathBuf;
 mod base;
 
-const DEFAULT_SCRIPT: &'static str = "./run.comfy";
+const DEFAULT_SCRIPT: &str = "./run.comfy";
 
 #[derive(StructOpt, Debug)]
 #[structopt(
@@ -20,11 +20,11 @@ enum Command {
     #[structopt(name = "helpf")]
     HelpF,
 
-    /// Run a script
+    /// Runs a script
     Run {
         /// Path to Comfy Script to run
         file: Option<PathBuf>,
-        /// Show comments from source while running
+        /// Shows comments from source while running
         #[structopt(short, long = "c")]
         comments: bool,
     },
@@ -33,7 +33,7 @@ enum Command {
 fn main() {
     let args = Arguments::from_args();
 
-    match args.subcommand.unwrap_or_else(|| Command::Run {
+    match args.subcommand.unwrap_or(Command::Run {
         file: None,
         comments: false,
     }) {
@@ -50,5 +50,6 @@ fn print_helpf() {
     println!();
     println!("  @[space]function         is how you call a function       ");
     println!("  sleep [int]              sleeps your program for [int] ms ");
+    println!("  print [str]              prints given text                ");
     println!();
 }
