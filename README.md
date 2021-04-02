@@ -52,7 +52,7 @@ Linux user here! x2
 
 *comfy* also has some *universal functions*, they work on any system regardless of the installed libraries. *comfy* comes with several packaged libraries, so far, we have the following *universal functions*:
 - @ sleep [int] (ms)
-- print [str] (text)
+- @ print [str] (text)
 
 ## Basic Usage
 
